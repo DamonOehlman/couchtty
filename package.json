@@ -15,9 +15,10 @@
     "node": ">= 0.4.x < 0.7.0"
   },
   "dependencies": {
-    "cleave": "*",
+    "async": "0.1.x",
+    "cleave": "0.1.x",
     "debug": "*",
-    "nano": "1.0.x",
+    "nano": "1.1.x",
     "out": "*"
   },
   "repository": {

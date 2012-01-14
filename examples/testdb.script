@@ -1,0 +1,8 @@
+# remove the existing database
+rm testdb
+
+# create the testdb
+create testdb
+
+# insert docs from the docs folder
+insert docs
