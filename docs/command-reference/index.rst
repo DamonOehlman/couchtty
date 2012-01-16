@@ -12,5 +12,6 @@ __ https://github.com/DamonOehlman/couchtty/issues/new
    :maxdepth: 1
    
    basic-commands
+   retrieval-commands
    update-commands
    admin-commands

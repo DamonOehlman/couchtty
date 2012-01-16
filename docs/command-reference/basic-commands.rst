@@ -47,7 +47,4 @@ In both cases, this is simply the JSON that is returned from CouchDB through the
 ``list``
 ========
 
-.. _command-get:
-
-``get``
-=======
+To be completed.
