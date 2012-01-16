@@ -5,4 +5,4 @@ rm testdb
 create testdb
 
 # insert docs from the docs folder
-insert docs
+put docs
