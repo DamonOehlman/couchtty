@@ -5,13 +5,11 @@ Getting Started
 Installing CouchTTY
 ===================
 
-If you are using `NPM`__ CouchTTY can be installed using the following command::
+If you are using `npm <http://npmjs.org>`_ CouchTTY can be installed using the following command::
 
     (sudo) npm install -g couchtty
 
 This will install CouchTTY globally on the system and will provide you access to the ``couchtty`` command.
-
-__ http://npmjs.org/
 
 Connecting to a Couch Instance
 ==============================
