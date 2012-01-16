@@ -6,7 +6,7 @@
     "couchdb"
   ],
   "author": "Damon Oehlman <damon.oehlman@sidelab.com>",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "index",
   "bin": {
     "couchtty": "./bin/couchtty"
