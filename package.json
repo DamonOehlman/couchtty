@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "async": "0.1.x",
-    "cleave": "0.1.x",
     "debug": "*",
     "nano": "1.1.x",
+    "climate": "0.2.x",
     "out": "*"
   },
   "repository": {
