@@ -12,14 +12,14 @@
     "couchtty": "./bin/couchtty"
   },
   "engines": {
-    "node": ">= 0.4.x < 0.7.0"
+    "node": ">= 0.6.x < 0.9.0"
   },
   "dependencies": {
     "async": "0.1.x",
     "debug": "*",
-    "nano": "2.1.x",
+    "nano": "3.3.x",
     "climate": "0.2.x",
-    "out": "*"
+    "out": "0.4.x"
   },
   "repository": {
     "type": "git",
