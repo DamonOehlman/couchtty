@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/DamonOehlman/couchtty.png)](http://travis-ci.org/DamonOehlman/couchtty)
 ========
 CouchTTY
 ========
