@@ -7,7 +7,6 @@
   ],
   "author": "Damon Oehlman <damon.oehlman@sidelab.com>",
   "version": "0.1.2",
-  "main": "index",
   "bin": {
     "couchtty": "./bin/couchtty"
   },
@@ -19,6 +18,7 @@
     "debug": "*",
     "nano": "3.3.x",
     "climate": "0.2.x",
+    "fstream": "0.1.x",
     "out": "0.4.x"
   },
   "repository": {
