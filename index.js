@@ -110,7 +110,7 @@ function _put(contents) {
                     	var reader = fstream.Reader({ path: path.resolve(contents) }),
                     		files = [];
 
-                    	reader.on('entry', function(entry) {
+                    	reader.on('child', function(entry) {
                     		if (entry.type === 'File' && path.extname(entry.path) === '.json') {
 	                    		files.push(entry.path);
                     		}
