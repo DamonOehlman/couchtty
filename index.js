@@ -7,6 +7,7 @@ var async = require('async'),
     path = require('path'),
     fs = require('fs'),
     nano = require('nano'),
+    _ = require('lodash'),
     ERROR_NODB = 'No database selected, run "use %dbname%" to specify the db',
     reTrailingSlash = /\/$/,
     couch,
@@ -107,17 +108,17 @@ function _put(contents) {
                 }
                 else {
                     if (stats.isDirectory()) {
-                    	var reader = fstream.Reader({ path: path.resolve(contents) }),
-                    		files = [];
+                        var reader = fstream.Reader({ path: path.resolve(contents) }),
+                            files = [];
 
-                    	reader.on('child', function(entry) {
-                    		if (entry.type === 'File' && path.extname(entry.path) === '.json') {
-	                    		files.push(entry.path);
-                    		}
-                    	});
+                        reader.on('child', function(entry) {
+                            if (entry.type === 'File' && path.extname(entry.path) === '.json') {
+                                files.push(entry.path);
+                            }
+                        });
 
-                    	reader.on('end', function() {
-                    		debug('uploading files into couch: ', files);
+                        reader.on('end', function() {
+                            debug('uploading files into couch: ', files);
                             async.forEach(
                                 files || [],
                                 function(file, itemCallback) {
@@ -125,9 +126,9 @@ function _put(contents) {
                                 },
                                 callback
                             );
-                    	});
+                        });
 
-                    	reader.on('error', callback);
+                        reader.on('error', callback);
                     }
                     else {
                         _insertFromFile(contents, callback);
@@ -215,17 +216,31 @@ function _handleResponse(callback) {
 function _insertFromFile(filename, callback) {
     debug('inserting doc from file: ' + filename);
     fs.readFile(filename, 'utf8', function(err, data) {
-        if (! err) {
-            try {
-                db.insert(JSON.parse(data), _handleResponse(callback));
-            }
-            catch (e) {
-                callback(e);
-            }
+        if (err) return callback(err);
+        
+        // check that we got valid json
+        try {
+            data = JSON.parse(data);
         }
-        else {
-            callback(err);
+        catch (e) {
+            return callback(new Error('Unable to parse json from file: ' + filename));
         }
+    
+        // add some base data as defaults
+        data = _.extend({
+            _id: path.basename(filename, path.extname(filename))
+        }, data);
+
+        // attempt to read the document from the db if we are updating
+        db.get(data._id, function(err, currentDoc) {
+            // if we have a current doc, then add the _rev to the data
+            if (currentDoc) {
+                data._rev = currentDoc._rev;
+            }
+            
+            // push the data
+            db.insert(data, _handleResponse(callback));
+        });
     });
 } // _insertFromFile
 

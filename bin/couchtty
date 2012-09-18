@@ -1,3 +1,4 @@
 #!/usr/bin/env node
 
 require('..').connect(process.argv.slice(2)[0]);
+

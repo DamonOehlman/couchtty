@@ -19,7 +19,8 @@
     "nano": "3.3.x",
     "climate": "0.2.x",
     "fstream": "0.1.x",
-    "out": "0.4.x"
+    "out": "0.4.x",
+    "lodash": "0.7.x"
   },
   "repository": {
     "type": "git",
