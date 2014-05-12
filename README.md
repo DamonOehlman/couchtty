@@ -10,9 +10,6 @@ That's what `couchtty` is designed to do.
 [![NPM](https://nodei.co/npm/couchtty.png)](https://nodei.co/npm/couchtty/)
 
 
-[![browser support](https://ci.testling.com/DamonOehlman/couchtty.png)](https://ci.testling.com/DamonOehlman/couchtty)
-
-
 ## Getting Started
 
 ## Getting Started
