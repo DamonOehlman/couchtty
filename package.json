@@ -1,17 +1,14 @@
 {
   "name": "couchtty",
   "description": "Experimental tty interface to CouchDB",
-  "tags": [
+  "keywords": [
     "database",
     "couchdb"
   ],
-  "author": "Damon Oehlman <damon.oehlman@sidelab.com>",
+  "author": "Damon Oehlman <damon.oehlman@gmail.com>",
   "version": "0.2.1",
   "bin": {
     "couchtty": "./bin/couchtty"
-  },
-  "engines": {
-    "node": ">= 0.6.x < 0.9.0"
   },
   "dependencies": {
     "async": "0.1.x",
@@ -28,8 +25,5 @@
   },
   "bugs": {
     "url": "http://github.com/DamonOehlman/couchtty/issues"
-  },
-  "contributors": [],
-  "devDependencies": {},
-  "optionalDependencies": {}
+  }
 }
