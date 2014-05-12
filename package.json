@@ -25,5 +25,17 @@
   },
   "bugs": {
     "url": "http://github.com/DamonOehlman/couchtty/issues"
-  }
+  },
+  "homepage": "https://github.com/DamonOehlman/couchtty",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gendocs": "gendocs > README.md"
+  },
+  "license": "MIT"
 }
