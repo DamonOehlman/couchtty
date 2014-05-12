@@ -11,13 +11,13 @@
     "couchtty": "./bin/couchtty"
   },
   "dependencies": {
-    "async": "0.1.x",
+    "async": "~0.8",
+    "climate": "~0.2",
+    "cog": "~0.5",
     "debug": "*",
-    "nano": "3.3.x",
-    "climate": "0.2.x",
-    "fstream": "0.1.x",
-    "out": "0.4.x",
-    "lodash": "0.7.x"
+    "fstream": "~0.1",
+    "nano": "^5",
+    "out": "~0.5"
   },
   "repository": {
     "type": "git",
