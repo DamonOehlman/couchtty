@@ -7,26 +7,26 @@ var async = require('async'),
     path = require('path'),
     fs = require('fs'),
     nano = require('nano'),
-    _ = require('lodash'),
+    extend = require('cog/extend'),
     ERROR_NODB = 'No database selected, run "use %dbname%" to specify the db',
     reTrailingSlash = /\/$/,
     couch,
     db,
     commands = {
         '#': _comment,
-        
+
         info: _info,
         list: _list,
         use: _use,
-        
+
         // get, put and delete
         get: _get,
         put: _put,
         'delete': _delete,
-        
+
         // admin ops
         create: _create,
-        
+
         // tty helpers
         install: _install,
 
@@ -46,7 +46,7 @@ var async = require('async'),
         put: ['insert'],
         'delete': ['rm']
     };
-    
+
 // ## command functions
 
 function _comment() {
@@ -79,7 +79,7 @@ function _use(name) {
     else {
         db = couch.use(name);
     }
-    
+
     return _info();
 }
 
@@ -208,7 +208,7 @@ function _handleResponse(callback) {
         else {
             out('!{grey}' + JSON.stringify(res));
         }
-    
+
         callback();
     };
 }
@@ -217,7 +217,7 @@ function _insertFromFile(filename, callback) {
     debug('inserting doc from file: ' + filename);
     fs.readFile(filename, 'utf8', function(err, data) {
         if (err) return callback(err);
-        
+
         // check that we got valid json
         try {
             data = JSON.parse(data);
@@ -225,9 +225,9 @@ function _insertFromFile(filename, callback) {
         catch (e) {
             return callback(new Error('Unable to parse json from file: ' + filename));
         }
-    
+
         // add some base data as defaults
-        data = _.extend({
+        data = extend({
             _id: path.basename(filename, path.extname(filename))
         }, data);
 
@@ -237,7 +237,7 @@ function _insertFromFile(filename, callback) {
             if (currentDoc) {
                 data._rev = currentDoc._rev;
             }
-            
+
             // push the data
             db.insert(data, _handleResponse(callback));
         });
@@ -251,7 +251,7 @@ function _error(text) {
 
 function _nanoWrap(targetCall, instance) {
     var args = Array.prototype.slice.call(arguments, 2);
-    
+
     return function(callback) {
         debug('calling nano function with args: ', args);
         targetCall.apply(instance, args.concat(_handleResponse(callback)));
@@ -263,20 +263,20 @@ function _nanoWrap(targetCall, instance) {
 exports.connect = function(targetUrl, inputs, outputs) {
     // strip the trailing slash
     targetUrl = (targetUrl || 'http://localhost:5984').replace(reTrailingSlash, '');
-    
+
     // TODO: check for a db attached to the url, if provided, then queue up a use command
-    
+
     debug('connecting to: ' + targetUrl);
     couch = nano(targetUrl);
 
     // start the repl
     repl = climate.repl('couchtty>', inputs, outputs);
-    
+
     // iterate through the commands and register
     Object.keys(commands).forEach(function(key) {
         repl.command(key, commands[key], help[key]);
     });
-    
+
     // register the aliases
     Object.keys(aliases).forEach(function(key) {
         repl.alias(key, aliases[key]);
@@ -286,14 +286,14 @@ exports.connect = function(targetUrl, inputs, outputs) {
         // parse the output looking for supported modules
         output.split('\n').map(path.basename).forEach(function(moduleName) {
             var extensionModule = moduleCommands[moduleName] || {};
-            
+
             // iterate through the commands and register
             Object.keys(extensionModule).forEach(function(key) {
                 if (typeof extensionModule[key] == 'function') {
                     repl.command(key, extensionModule[key], help[key]);
                 }
             });
-            
+
             extensionModule.server = targetUrl;
 
             // remove teh module commands so they don't get readded
