@@ -19,6 +19,8 @@ var ERROR_NODB = 'No database selected, run "use %dbname%" to specify the db';
 
   That's what `couchtty` is designed to do.
 
+  ## Getting Started
+
   <<< docs/getting-started.md
 
   ## CouchTTY Alternatives

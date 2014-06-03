@@ -1,5 +1,3 @@
-## Getting Started
-
 ### Connecting to a Couch Instance
 
 Simply run `couchtty` and provide a url to your couchdb instance, e.g.:

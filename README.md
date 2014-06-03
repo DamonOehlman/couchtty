@@ -6,6 +6,11 @@ that makes it a little easier.
 
 That's what `couchtty` is designed to do.
 
+
+[![NPM](https://nodei.co/npm/couchtty.png)](https://nodei.co/npm/couchtty/)
+
+
+
 ## Getting Started
 
 ### Connecting to a Couch Instance
@@ -90,10 +95,6 @@ If it worked, then you will see the tty report 3 successful PUT operations:
 {"ok":true,"id":"_design/example","rev":"1-230141dfa7e07c3dbfef0789bf11773a"}
 {"ok":true,"id":"test2","rev":"1-5a0cbbc26fdd3a1503bded465de3ddf1
 ```
-
-
-
-[![NPM](https://nodei.co/npm/couchtty.png)](https://nodei.co/npm/couchtty/)
 
 
 ## CouchTTY Alternatives
