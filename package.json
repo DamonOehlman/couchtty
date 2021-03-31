@@ -16,7 +16,7 @@
     "cog": "~0.5",
     "debug": "*",
     "fstream": "~0.1",
-    "nano": "^5",
+    "nano": "^6.0.0",
     "out": "~0.5"
   },
   "repository": {
